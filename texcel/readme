@@ -1,0 +1,18 @@
+Download Docker Image 
+1.	Open your OS terminal
+2.	From your terminal run the following command: “docker login”
+a.	Enter your docker hub credentials 
+3.	In order to download the image run the following command “docker pull dzbeda/texel” 
+
+Apply k8s deployment 
+1.	Copy the deployment.yml & nodeport.yml files to your Kubernetes cluster 
+2.	Run the following command: “kubectl apply -f deployment.yml” ; This will take the image you have pulled from the docker hub
+3.	Run the following command: “kubectl apply -f nodeport.yml” ; Port 30007 will forward to Nginx listening to port 80
+ 
+User browser 
+1.	Open the browser and type the following address: http://<kuberntes-node-ip>:30007  ; You should get a web page that includes time and date 
+
+Python:
+1.In the python script you will need to update the follwoing 
+  A. web_site value ; need to point to your nginx IP address  - port should be 30007
+  B. The path for the geckodriver.exe that is required for the selenium firefox
