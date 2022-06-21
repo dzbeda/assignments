@@ -1,0 +1,29 @@
+This script \ service will run a search on musicmatch database based on the following arguments
+
+word to search in songs lyrics : this is based on user input. If no input was supplied default will be car.
+Songs language is English
+Album release date is prior to 01-01-2010
+
+The service \ script will generate 2 file outputs
+1. output.log - a log file for each query
+2. song_list_<quey_id>.scv - A CSV file that contains  the songs that match the query. A file per query
+
+
+
+**  Standalone python script **
+
+please run the script, enter a word that you wish to search (In case that the user didn’t include any input the default will be car).  
+The script will output a log file (output.log) and a csv file. 
+Output path can be defined in the script
+
+
+
+
+** Docker Solution **
+
+In order to perform a search based on a word, the environment variable should be set – if not, the default word will be "car".
+environment variable name = word_search
+
+The script output will be created under /output folder. You can mount the folder to your local server as shown in the bellow command 
+Docker command example: docker run -d --env <environment variable name >=< environment name value> -v <local-computer-folder-path>:/output <image-name>
+Docker command to run : docker run -d --env word_search=hello -v /data/mobileye/output:/output mobileye
